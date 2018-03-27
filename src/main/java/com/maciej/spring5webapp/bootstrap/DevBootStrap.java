@@ -30,20 +30,24 @@ public class DevBootStrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void onInit(){
 
-        Publisher publisher = new Publisher();
-        publisher.setName("Houghton Mifflin Harcourt");
-        publisherRepository.save(publisher);
+        Publisher tolkienPublisher = new Publisher();
+        tolkienPublisher.setName("Houghton Mifflin Harcourt");
+        publisherRepository.save(tolkienPublisher);
 
         Author tolkien = new Author("J. R. R.", "Tolkien");
-        Book fellowship = new Book("Fellowship of The Ring","0618346252",publisher);
+        Book fellowship = new Book("Fellowship of The Ring","0618346252",tolkienPublisher);
         tolkien.getBooks().add(fellowship);
         fellowship.getAuthors().add(tolkien);
 
         authorRepository.save(tolkien);
         bookRepository.save(fellowship);
 
+        Publisher sapkowskiPublisher = new Publisher();
+        sapkowskiPublisher.setName("Supernova");
+        publisherRepository.save(sapkowskiPublisher);
+
         Author andrew = new Author("Andrzej.", "Sapkowski");
-        Book witcher = new Book("Wiedzmin. Ostatnie zyczenie","978-83-7578-028-4", publisher);
+        Book witcher = new Book("Wiedzmin. Ostatnie zyczenie","978-83-7578-028-4", sapkowskiPublisher);
         andrew.getBooks().add(witcher);
         witcher.getAuthors().add(andrew);
 
